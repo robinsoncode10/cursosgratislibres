@@ -1,0 +1,259 @@
+:root {
+    /*Tema de colores*/
+    --colorPrimary      :   #00042D;
+    --colorSecundary    :   #fff;
+    --colorTerteary     :   #380052;
+    --colorFourth       :   #ffa600;
+    --colorFifth        :   #ffd900;
+
+    --white             :   #fff;
+    
+    --fontPrimary       :   'Roboto', sans-serif;
+    --fontLogo          :   'Kdam Thmor Pro', sans-serif;
+}
+/*Modo oscuro*/
+@media (prefers-color-scheme: dark){
+    :root{
+        --colorPrimary      :   #00042D;
+        --colorSecundary    :   #fff;
+        --white             :   #fff;
+    }
+}
+/*Modo alto contraste*/
+@media (prefers-contrast: high){
+    :root{
+        --colorPrimary      :   black;
+        --colorSecundary    :   white;
+    }
+}
+* {
+    margin: 0;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box; /*Calcula las dimensiones de los elementos para que los bordes no afecten el tamaño de la caja*/
+    font-size: 62.5%; /*Ahora 1 rem que valia 16px pasa a valer 10px*/
+}
+body{
+    font-family: var(--fontPrimary);
+}
+/*Desactivamos estilos por defecto de las principales etiquetas de texto*/
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, i, b, u, em{
+    font-size: 1em;
+    font-weight: inherit;
+    font-style: inherit;
+    text-decoration: none;
+    color: inherit;
+    margin: 0;
+}
+/*Nivelamos problemas de tipografías y colocación de formularios*/
+form, input, textarea, select, button, label{
+    font-family: inherit;
+    font-size: inherit;
+    hyphens: auto; /*Nos coloca un guión cuando el texto se desborde al final*/
+    background-color: transparent;
+    display: block;   
+}
+/*Quitamos los puntos de los <li>*/
+li {
+    list-style-type: none;
+}
+/*Botones*/
+.btnPrimary{
+    padding: 8px;
+    background-color: var(--colorFourth);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all .3s ease;
+    margin: 1rem;
+    white-space: nowrap;
+}
+@media (min-width: 1023px) {
+   .btnPrimary{
+    font-size: 1.4rem;
+   } 
+}
+.btnPrimary:hover{
+    background-color: var(--colorFifth);
+}
+/*Header*/
+.header{
+    background-color: var(--colorPrimary);
+    height: 5.2rem;
+}
+/*Nav*/
+.nav{
+    display: grid;
+    grid-template-areas: "logo banner search login menu";
+    grid-template-columns: auto 1fr auto auto auto;
+    grid-template-rows: 100%;
+}
+@media (min-width: 768px) {
+    .nav{
+        grid-template-columns: auto 1fr auto auto auto;  
+    }
+}
+@media (min-width: 1330px) {
+    .nav{
+        grid-template-areas: "logo banner search menu login";
+        grid-template-columns: auto 1fr auto auto auto;
+    }
+}
+/*Logo*/
+.logo{
+    grid-area: logo;
+    padding: 1.2rem;
+}
+.logoHeader-container{
+    display: flex;
+}
+.isotipo{
+    width: 2.3rem;
+    margin-right: 0.5rem;
+}
+.name{
+    display: none;
+}
+
+@media (min-width: 281px) {
+    
+    .name{
+        color: var(--white);
+        display: block;
+        margin-top: 0.6rem;
+        font-size: 1.3rem;
+        font-family: var(--fontLogo);
+    }
+}
+
+@media (min-width: 480px) {
+    
+    .name{
+        margin-top: 0.4rem;
+        font-size: 1.7rem;
+    }
+}
+
+@media (min-width: 1023px) {
+    .logo{
+        padding: 1rem;
+    }
+    .isotipo{
+        width: 2.5rem;
+    }
+    .name{
+        font-size: 1.9rem; 
+    }
+}
+/*Nav-banner*/
+.nav-banner{
+    grid-area: banner;
+
+}
+/*Search*/
+.search-box{
+    display: none;
+}
+.search-mobile{
+    color: var(--colorFourth);
+    font-size: 1.4rem;
+    margin: 1rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--colorFourth);
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .search-mobile{
+        display: none;
+    }
+    .search-box{
+        grid-area: search;
+        display: flex;
+        border-radius: 0.5rem;
+        margin: 1rem;
+        border: 1px solid var(--colorTerteary);
+        padding: 0.6rem 1rem;
+    }
+    .search-button{
+        border: none;
+    }
+    .search-button{
+        color: var(--colorFourth);
+        font-size: 1.4rem;
+    }
+    .search-input{
+        color: var(--colorSecundary);
+        background: 0 0;
+        border: none;
+        width: 100%;
+        font-size: 1.4rem;
+        outline: none;
+    }
+    .search-input::placeholder{
+        color: var(--colorSecundary);
+    }
+    .search-box:hover{
+        transition: .3s;
+        animation-timing-function: ease-in;
+        border-color: #ffa600;
+    }   
+}
+
+/*Menu*/
+.menu{
+    grid-area: menu;
+}
+
+.fa-bars{
+    padding: 1.2rem 1rem;
+    font-size: 2.5rem;
+    color: var(--white);
+}
+
+.menu-content{
+    display: none;
+}
+@media (min-width: 1330px) {
+    .menu-dropdown{
+        display: none;
+    }
+    .menu-content{
+        display: block;
+        height: 100%;
+        left: 0;
+        top: 1rem;
+        overflow-y: hidden;
+        position: relative;
+        width: 100%;
+        padding: 2px 12px;
+    }
+    .menu-list-item{
+        display: inline-block;
+        padding: 5px 12px 5px 5px;
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: var(--white);
+    }
+    .menu-list-item a{
+        cursor: pointer;
+    }   
+}
+
+/*Botón iniciar sesión*/
+.buttonLogin{
+    grid-area: login;
+}
+.buttonLogin div{
+    padding-top: 1.9rem;
+}
+@media (min-width: 1023px) {
+    .buttonLogin div{
+        padding-top: 1.8rem;
+    }   
+}
+
